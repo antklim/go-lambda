@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  rei:
+    build:
+      context: .
+      dockerfile: DockerfileREI
+    networks:
+      - lambda-nw
+    depends_on:
+      - lambda
+    ports: 
+      - 9000:8080
+
+  lambda:
+    build:
+      context: .
+      dockerfile: DockerfileAlpine
+    networks:
+      - lambda-nw
+    environment:
+      _LAMBDA_SERVER_PORT: 8080
+      AWS_LAMBDA_RUNTIME_API: "0.0.0.0:8080"
+
+networks:
+  lambda-nw:
