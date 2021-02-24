@@ -3,5 +3,5 @@ FROM alpine
 ADD https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/latest/download/aws-lambda-rie /usr/local/bin/aws-lambda-rie
 RUN chmod 755 /usr/local/bin/aws-lambda-rie
 COPY rei.sh /
-RUN chmod 755 /rei.sh
-ENTRYPOINT [ "/rei.sh" ]
+RUN chmod 755 /rie.sh
+ENTRYPOINT [ "/rie.sh" ]
